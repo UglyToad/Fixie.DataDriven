@@ -5,13 +5,32 @@
     using System.Linq;
     using System.Reflection;
 
+    /// <summary>
+    /// Get the test data from a member of this class. One of:
+    /// Property
+    /// Field
+    /// Parameterless Method
+    /// The member must be static and have type equivalent to IEnumberable&lt;object&gt;.
+    /// The member can have any access modifier (public, internal, protected, private).
+    /// The member can be on a base class and will automatically be located without specifying the type.
+    /// </summary>
     [AttributeUsage(AttributeTargets.Method)]
     public class MemberDataAttribute : Attribute
     {
+        /// <summary>
+        /// The name of the member to locate and use to provide the data.
+        /// </summary>
         public string MemberName { get; }
 
+        /// <summary>
+        /// The type of the class holding the member. If not provided the current test class will be used.
+        /// </summary>
         public Type Type { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InlineDataAttribute"/>.
+        /// </summary>
+        /// <param name="memberName">The name of the member to use.</param>
         public MemberDataAttribute(string memberName)
         {
             MemberName = memberName;
@@ -83,7 +102,7 @@
             var propInfo = GetMemberInfoByName(type, t => t.GetRuntimeProperties(),
                 p => p.Name.Equals(memberDataAttribute.MemberName, StringComparison.InvariantCultureIgnoreCase));
 
-            if (propInfo == null || propInfo.GetMethod == null || !propInfo.GetMethod.IsStatic)
+            if (propInfo?.GetMethod == null || !propInfo.GetMethod.IsStatic)
             {
                 return null;
             }

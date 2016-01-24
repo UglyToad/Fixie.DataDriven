@@ -1,0 +1,1 @@
+nuget pack ..\UglyToad.Fixie.DataDriven.nuspec

@@ -6,11 +6,9 @@
     {
         public DataDrivenTestConvention()
         {
-                Classes
-                    .NameEndsWith("Tests");
+            Classes.NameEndsWith("Tests");
 
-                Methods
-                    .Where(method => method.IsVoid());
+            Methods.Where(method => method.IsVoid());
 
             Parameters
                 .Add<ProvideTestDataFromInlineData>()

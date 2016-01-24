@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
+  <metadata>
+    <id>UglyToad.Fixie.DataDriven</id>
+    <version>1.0.0</version>
+    <title>Fixie DataDriven</title>
+    <authors>UglyToad</authors>
+    <owners>UglyToad</owners>
+    <licenseUrl>https://github.com/UglyToad/Fixie.DataDriven/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/UglyToad/Fixie.DataDriven</projectUrl>
+	<iconUrl>https://raw.githubusercontent.com/UglyToad/DataTable/master/uglytoadsmall.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provides xUnit style InlineData and MemberData attributes for use in Fixie tests.</description>
+	<tags>Fixie xUnit TDD unittesting</tags>
+  </metadata>
+  <files>
+		<file src="src\UglyToad.Fixie.DataDriven\bin\Release\UglyToad.Fixie.DataDriven.dll" target="lib\net45"/>
+		<file src="src\UglyToad.Fixie.DataDriven\bin\Release\UglyToad.Fixie.DataDriven.xml" target="lib\net45"/>
+	</files>
+</package>
+

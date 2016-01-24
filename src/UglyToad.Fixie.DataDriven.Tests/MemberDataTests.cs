@@ -5,7 +5,7 @@
     public class MemberDataTests : TestBase
     {
         public static IEnumerable<object[]> Property => new[]
-{
+        {
             new object[] {1, 2, 3},
             new object[] {16, 9, 25}
         };
