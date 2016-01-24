@@ -1,5 +1,9 @@
 # Fixie - Data Driven #
 
+[![Build status](https://ci.appveyor.com/api/projects/status/fa6k4yw9h5fmg1i5?svg=true)](https://ci.appveyor.com/project/EliotJones/fixie-datadriven)
+
+[NuGet][NuGet]
+
 This projects adds xUnit style attributes to provide test data for Fixie unit tests.
 
 It adds the following attributes:
@@ -56,3 +60,5 @@ For example a full configuration would look like this:
                 .Add<ProvideTestDataFromMemberData>();
         }
     }
+    
+[NuGet]: https://www.nuget.org/packages/UglyToad.Fixie.DataDriven/
