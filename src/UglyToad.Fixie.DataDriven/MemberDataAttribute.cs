@@ -14,7 +14,7 @@
     /// The member can have any access modifier (public, internal, protected, private).
     /// The member can be on a base class and will automatically be located without specifying the type.
     /// </summary>
-    [AttributeUsage(AttributeTargets.Method)]
+    [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public class MemberDataAttribute : Attribute
     {
         /// <summary>
@@ -38,13 +38,18 @@
 
         internal static IEnumerable<object[]> GetData(MethodInfo methodInfo)
         {
-            var attribute = methodInfo.GetCustomAttribute<MemberDataAttribute>(true);
+            var attributes = methodInfo.GetCustomAttributes<MemberDataAttribute>(true).ToList();
 
-            if (attribute == null)
+            if (attributes.Count == 0)
             {
                 return new object[][] { };
             }
 
+            return attributes.SelectMany(x => GetSingleAttributeData(methodInfo, x));
+        }
+
+        private static IEnumerable<object[]> GetSingleAttributeData(MethodInfo methodInfo, MemberDataAttribute attribute)
+        {
             var targetType = attribute.Type ?? methodInfo.DeclaringType;
 
             if (targetType == null)
@@ -69,7 +74,7 @@
             }
 
             return data;
-        }
+        } 
 
         private static Func<object> GetFromField(MemberDataAttribute memberDataAttribute, Type type)
         {

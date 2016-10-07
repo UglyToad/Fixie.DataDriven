@@ -80,5 +80,14 @@
 
             Assert.IsEqual(expected, result);
         }
+
+        [MemberData("Method")]
+        [MemberData("BaseMethod")]
+        public void MultipleMemberData(int a, int b, int expected)
+        {
+            var result = a - b;
+
+            Assert.IsEqual(expected, result);
+        }
     }
 }
