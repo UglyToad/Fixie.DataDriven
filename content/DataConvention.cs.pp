@@ -9,7 +9,7 @@ namespace $rootnamespace$
         {
             Classes.NameEndsWith("Tests");
 
-            Methods.Where(method => method.IsVoid());
+            Methods.Where(method => method.IsVoid() || method.IsAsync());
 
             Parameters
                 .Add<ProvideTestDataFromInlineData>()
